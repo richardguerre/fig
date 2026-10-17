@@ -1,0 +1,13 @@
+{
+  "name": "fig",
+  "owner": { "name": "Fig", "url": "https://figaeo.com" },
+  "plugins": [
+    {
+      "name": "figaeo",
+      "source": "./",
+      "description": "Agent-first SEO and AEO: hosted MCP research plus specialist skills.",
+      "version": "1.0.0",
+      "homepage": "https://figaeo.com"
+    }
+  ]
+}

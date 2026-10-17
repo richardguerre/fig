@@ -1,32 +1,46 @@
-# Fig for Cursor
+# Fig
 
-First-time setup for agents: fetch https://figaeo.com/llms.txt (optional https://figaeo.com/install.md). Fig is the missing tool for Cursor to research and ship SEO and AEO. $20 one-time. Start with the `fig` skill, then call on `fig-site-audit`, `fig-search-research`, `fig-answer-research`, `fig-content-strategy`, `fig-content-craft`, `fig-programmatic-seo`, `fig-free-tool`, `fig-content-validation`, `fig-outcomes`, `fig-seo-setup`, `fig-offpage`, and `fig-distribute` as needed.
+Fig is agent-first SEO and AEO. It gives your AI agent live keyword, SERP, backlink and AI-visibility data through a hosted MCP server, plus specialist skills to audit pages, plan content, write, validate and track results. $20 one-time.
 
+## Set up
 
-Install the Fig plugin, or add a remote MCP server, then ask in chat.
+Paste this into your agent:
 
-- URL: `https://figaeo.com/mcp`
-- Transport: Streamable HTTP
-- Auth: complete MCP OAuth 2.1 in the connect card with GitHub or Google
+```
+Set up Fig - https://figaeo.com/llms.txt
+```
 
-## Plugin
+The agent adds the MCP server and installs the skills. Sign in with GitHub or Google when asked.
 
-Manifest: `plugin.json` (Agent Plugins) and `.cursor-plugin/plugin.json` (Cursor). MCP: `mcp.json` (`type: streamable-http` at `https://figaeo.com/mcp`). There is no `.mcp.json` in this package.
+## Manual install
 
-Cursor Marketplace: this repo’s `.cursor-plugin/marketplace.json` points at `packages/cursor`. Until the listing is live, Settings → MCP → Add remote server, or install this plugin locally, then complete OAuth.
+MCP server: `https://figaeo.com/mcp` (Streamable HTTP, OAuth 2.1 sign-in with GitHub or Google).
+
+- **Cursor**: install this plugin (`.cursor-plugin/plugin.json`), or add the remote MCP server in Settings, then complete sign-in.
+- **Codex**: this repo has a Codex plugin manifest (`.codex-plugin/plugin.json`, `.mcp.json`, `skills/`). Add it as a plugin, or run `codex mcp add figaeo --url https://figaeo.com/mcp` and copy `skills/` into your skills folder.
+- **Grok Bot**: add the plugin from the Grok Bot marketplace, or add the MCP server URL above.
+- **Claude Code**: `/plugin marketplace add richardguerre/fig`, then `/plugin install figaeo@fig`. Or `claude mcp add --transport http figaeo https://figaeo.com/mcp`.
+- **OpenClaw and other agents**: add the MCP server URL above and copy the folders in `skills/` into your agent's skills folder.
+
+## Skills
+
+Start with `fig`, the router. It calls the specialists as needed: `fig-site-audit`, `fig-search-research`, `fig-answer-research`, `fig-aeo`, `fig-seo`, `fig-content-strategy`, `fig-content-craft`, `fig-programmatic-seo`, `fig-free-tool`, `fig-content-validation`, `fig-outcomes`, `fig-seo-setup`, `fig-offpage`, `fig-distribute`, `fig-growth-creative`.
 
 ## First lookup
 
-Ask Cursor: “Look up keywords acmeauth.dev already ranks for in the United States, then suggest related ideas from the strongest terms.”
+Ask your agent: "Check my Fig balance, then audit my site for SEO and AEO." The balance check is free.
 
-If remaining usage is $0, Cursor should call `create_checkout` (default $20, minimum $10). Your agent starts Checkout and gives a short figaeo.com/pay link. Open the link in your browser and pay on Stripe Checkout. Stripe Link may autofill your details there. Never paste a checkout.stripe.com hash URL into chat. Taxes are added at Checkout. Then retry the same tool.
+## Credits
 
-About 2,000 live SERPs (top 10) per $10. About 250 keyword-idea lookups per $10 at the default of 20 ideas.
+Research lookups use credits. When your balance is empty, the agent calls `create_checkout` and gives you a short figaeo.com/pay link. Open it in your browser and pay on Stripe Checkout. $20 one-time is the recommended pack; the minimum is $10. Taxes are added at Checkout.
 
-$20 is the recommended pack: about 4,000 live SERPs (top 10) or about 500 keyword-idea lookups (20 ideas each)—enough to research, act on, and recheck one website for about four weeks. Call create_checkout() with no amount to buy $20; minimum is $10. Deeper SERPs and site: queries cost more.
+## Files
 
-A typical website can use about 20 idea lookups and about 120 SERPs per two weeks (about 30 keywords, 3 snapshots). A $20 pack leaves substantial room for research, changes, and validation.
+- `plugin.json`, `mcp.json`: Agent Plugins layout
+- `.cursor-plugin/`: Cursor
+- `.codex-plugin/`, `.mcp.json`: Codex
+- `.claude-plugin/`: Claude Code
+- `skills/`: shared `SKILL.md` skills
+- `assets/`: logo
 
-## Boundaries
-
-Cursor uses Fig’s live research and specialist skills to improve the website in the same workspace.
+Website: https://figaeo.com

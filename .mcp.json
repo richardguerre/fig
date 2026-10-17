@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "figaeo": {
+      "type": "http",
+      "url": "https://figaeo.com/mcp"
+    }
+  }
+}
